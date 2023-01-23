@@ -2,38 +2,59 @@ package com.ironhack.ironbattle.classes;
 
 import com.ironhack.ironbattle.interfaces.Attacker;
 
-public class Wizard extends Character implements Attacker {
+public class Wizard<string> extends Character implements Attacker {
+
+    private int hp;
     private int mana;
     private int intelligence;
 
-//    public Wizard(String name, int hp, int mana, int intelligence) {
-//        super(name, hp);
-//        this.mana = mana;
-//        this.intelligence = intelligence;
-//    }
 
     public Wizard(String name) {
         super(name);
-        this.mana = (int)(Math.random()*50-10+1)+10;
-        this.intelligence = (int)(Math.random()*50)+10;
+        this.hp = (int)(Math.random()*(100-50+1))+50;
+        this.mana = (int)(Math.random()*(50-10+1))+10;
+        this.intelligence = (int)(Math.random()*(50-1))+1;
     }
 
+    public Wizard(String name, int hp) {
+        super(name, hp);
+        this.hp = hp;
+        this.mana = (int)(Math.random()*(50-10+1))+10;
+        this.intelligence = (int)(Math.random()*(50-1))+1;
+    }
+
+    public Wizard(String name, int hp, int mana, int intelligence) {
+        super(name);
+        this.hp = hp;
+        this.mana = mana;
+        this.intelligence = intelligence;
+    }
 
     public void attack(Character character) {
         int fireball = intelligence;
 
-        int attack = (int)(Math.random()*2+1);
-        if (attack == 1 && mana >= fireball){
+        String attack = (((int)(Math.random()*2)+1 == 1) ? "Fireball" : "Staff Hit");
+        if (attack.equals("Fireball") && mana >= 5){
             character.setHp(character.getHp() - fireball);
             mana = mana - 5;
-            System.out.println(getName() + " casts Fireball and lost 5 points of mana  ." + mana + " points left." + character.getName() +
-                    "receives " + fireball + " points of damage. " + character.getHp() + "life points left\n");
+            System.out.println(getName() + " casts " + attack + " and lost 5 points of mana. Mana points left: " + mana + "\n" + character.getName() + " receives " + fireball + " points of damage. Life points left: " + character.getHp() + "\n" );
         }
         else {
             character.setHp(character.getHp() - 2);
             mana++;
-            System.out.println(getName() + " casts Staff Hit and wins 1 point of mana  . " + character.getName() + "receives 2 points of damage. " + character.getHp() + "life points left\n");
+            System.out.println(getName() + " casts " + attack + " and wins 1 point of mana. Mana points left: " + mana + "\n"  + character.getName() + " receives 2 points of damage. Life points left: " + character.getHp() + "\n" );
         }
+        if (character.getHp() < 1) character.setAlive(false);
+    }
+
+    @Override
+    public int getHp() {
+        return hp;
+    }
+
+    @Override
+    public void setHp(int hp) {
+        this.hp = hp;
     }
 
     public int getMana() {
@@ -55,8 +76,8 @@ public class Wizard extends Character implements Attacker {
     @Override
     public String toString() {
         return "Character sheet: \nName: " + getName() +
-                "\nMana: " + mana + " points" +
-                "\nIntelligence: " + intelligence + " points" +
-                "\nHp: " + getHp() + " points\n";
+                "\nMana (10/50): " + mana + " points" +
+                "\nIntelligence (1/50): " + intelligence + " points" +
+                "\nHp (50/100): " + hp + " points\n";
     }
 }
