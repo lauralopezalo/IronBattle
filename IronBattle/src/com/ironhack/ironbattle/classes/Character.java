@@ -8,10 +8,16 @@ public abstract class Character {
     private boolean isAlive = true;
 
     public Character(String id, String name, int hp, boolean isAlive) {
-        this.id = id;
+        this.id = java.util.UUID.randomUUID().toString();
         this.name = name;
         this.hp = hp;
-        this.isAlive = isAlive;
+        this.isAlive = true;
+    }
+
+    public Character(String name, int hp) {
+        this.id = java.util.UUID.randomUUID().toString();
+        this.name = name;
+        this.hp = hp;
     }
 
     public String getId() {
@@ -44,5 +50,15 @@ public abstract class Character {
 
     public void setAlive(boolean alive) {
         isAlive = alive;
+    }
+
+    @Override
+    public String toString() {
+        return "Character{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", hp=" + hp +
+                ", isAlive=" + isAlive +
+                '}';
     }
 }
