@@ -5,6 +5,9 @@ public abstract class Character {
     private String name;
     private int hp;
     private boolean isAlive = true;
+    private void playSound() {
+
+    }
 
     public Character(String name) {
         this.id = "0125";
