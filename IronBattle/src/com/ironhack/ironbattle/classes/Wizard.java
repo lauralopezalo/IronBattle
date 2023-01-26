@@ -2,7 +2,7 @@ package com.ironhack.ironbattle.classes;
 
 import com.ironhack.ironbattle.interfaces.Attacker;
 
-public class Wizard<string> extends Character implements Attacker {
+public class Wizard extends Character  {
 
     private int hp;
     private int mana;
@@ -75,7 +75,9 @@ public class Wizard<string> extends Character implements Attacker {
 
     @Override
     public String toString() {
-        return "Character sheet: \nName: " + getName() +
+        return "Character sheet: \nName: " + getName() + " (" +
+                this.getClass().getName().substring(getClass().getName().lastIndexOf(".")+ 1) + ")" +
+                "\nId: " + getId() +
                 "\nMana (10/50): " + mana + " points" +
                 "\nIntelligence (1/50): " + intelligence + " points" +
                 "\nHp (50/100): " + hp + " points\n";
