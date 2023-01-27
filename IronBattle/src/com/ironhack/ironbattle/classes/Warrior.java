@@ -1,6 +1,7 @@
 package com.ironhack.ironbattle.classes;
 import com.ironhack.ironbattle.interfaces.Attacker;
 
+
 public class Warrior extends Character {
 
     private int hp;
@@ -46,6 +47,7 @@ public class Warrior extends Character {
             System.out.println(getName() + " casts " + attack + " and wins 1 point of stamina. Stamina points left: " + stamina + "\n" + character.getName() + " receives " + weakAttack + " points of damage. Life points left: " + character.getHp() + "\n" );
         }
         if (character.getHp() < 1) character.setAlive(false);
+
     }
 
     @Override
@@ -64,6 +66,7 @@ public class Warrior extends Character {
 
     public void setStamina(int stamina) {
         this.stamina = stamina;
+      
     }
 
     public int getStrength() {
@@ -84,3 +87,4 @@ public class Warrior extends Character {
                 "\nHp (100/200): " + hp + " points\n";
     }
 }
+

@@ -1,4 +1,8 @@
 package com.ironhack.ironbattle.main;
+import com.ironhack.ironbattle.classes.Character;
+import com.ironhack.ironbattle.classes.Warrior;
+import com.ironhack.ironbattle.classes.Wizard;
+import java.lang.reflect.Array;
 
 import com.ironhack.ironbattle.classes.Character;
 import com.ironhack.ironbattle.classes.Warrior;
@@ -75,6 +79,7 @@ public class Main {
             System.out.println("\n\n" + fighter1.getName().toUpperCase() +" WINS!!!!!!\n\n");
         else
             System.out.println("\n\n" + fighter2.getName().toUpperCase() +" WINS!!!!!!\n\n");
+
 
     }
 

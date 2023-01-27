@@ -1,5 +1,6 @@
 package com.ironhack.ironbattle.classes;
 
+
 import com.ironhack.ironbattle.interfaces.Attacker;
 
 public abstract class Character implements Attacker {
@@ -53,5 +54,13 @@ public abstract class Character implements Attacker {
         isAlive = alive;
     }
 
-
+    @Override
+    public String toString() {
+        return "Character{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", hp=" + hp +
+                ", isAlive=" + isAlive +
+                '}';
+    }
 }
