@@ -1,23 +1,25 @@
 package com.ironhack.ironbattle.classes;
 
-public abstract class Character {
 
+import com.ironhack.ironbattle.interfaces.Attacker;
+
+public abstract class Character implements Attacker {
     private String id;
     private String name;
     private int hp;
-    private boolean isAlive = true;
+    private boolean isAlive;
 
-    public Character(String id, String name, int hp, boolean isAlive) {
+    public Character(String name, int hp) {
         this.id = java.util.UUID.randomUUID().toString();
         this.name = name;
         this.hp = hp;
         this.isAlive = true;
     }
 
-    public Character(String name, int hp) {
+    public Character(String name) {
         this.id = java.util.UUID.randomUUID().toString();
         this.name = name;
-        this.hp = hp;
+        this.isAlive = true;
     }
 
     public String getId() {
